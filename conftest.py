@@ -20,12 +20,13 @@ from pages.base_page import BasePage
 
 @pytest.fixture(scope='function')
 def driver():
-    browser = webdriver.Chrome()
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--headless')
+    browser = webdriver.Chrome(options=chrome_options)
     browser.get(BasePage.URL)
 
     yield browser
     browser.quit()
-
 
 # @pytest.fixture(params=['firefox', 'chrome'])
 # def driver(request):

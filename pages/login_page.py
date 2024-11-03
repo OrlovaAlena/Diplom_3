@@ -28,3 +28,4 @@ class LoginPage(BasePage):
         self.fill_input(Elements.EMAIL_INPUT, data[0])
         self.click_to_element(Elements.CONFIRM_LOGIN_BUTTON)
         self.wait_for_url(BasePage.URL)
+        return data[3]
