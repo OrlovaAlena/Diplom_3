@@ -107,7 +107,6 @@ class TestOrderPage:
 
         order_page = OrderPage(driver)
         order_page.open()
-        order_page.wait_for_order()
 
         delete_user(access_token)
 

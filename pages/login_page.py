@@ -8,10 +8,6 @@ class LoginPage(BasePage):
 
     URL = 'https://stellarburgers.nomoreparties.site/login'
 
-    @allure.step('Создание пользователя')
-    def create_user(self):
-        return helper.create_new_user()
-
     @allure.step('Открыть страницу логина')
     def open(self):
         self.open_page(self.URL)
@@ -23,7 +19,7 @@ class LoginPage(BasePage):
 
     @allure.step('Авторизация пользователя')
     def authorize_user(self):
-        data = self.create_user()
+        data = helper.create_new_user()
         self.fill_input(Elements.PASSWORD_INPUT, data[1])
         self.fill_input(Elements.EMAIL_INPUT, data[0])
         self.click_to_element(Elements.CONFIRM_LOGIN_BUTTON)

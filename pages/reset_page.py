@@ -15,4 +15,3 @@ class ResetPasswordPage(BasePage):
     @allure.step('Проверить активность поля ввода пароля')
     def check_if_field_password_input_active(self):
         return self.find_element(Elements.PASSWORD_INPUT_RESET).get_attribute('type')
-

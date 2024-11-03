@@ -10,15 +10,16 @@ from src.elements import Elements
 
 class Header(BasePage):
 
-    @allure.step('Кликнуть по кнопке "Личный кабинет"')
+    @allure.step('Клик по кнопке "Личный кабинет"')
     def click_account_button(self):
-        # self.open_page(BasePage.URL)
         self.click_to_element(Elements.PERSONAL_ACCOUNT)
         self.wait_for_url(PersonalAccountPage.URL)
 
+    @allure.step('Клик по кнопке "Конструктор"')
     def click_to_constructor_button(self):
         self.click_to_element(Elements.CONSTRUCTOR)
 
+    @allure.step('Клик по кнопке "Лента заказов"')
     def click_to_order_list_button(self):
         self.click_to_element(Elements.ORDER_LIST)
         self.wait_for_visible(Elements.ORDER_HEADER_SIGN)

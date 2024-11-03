@@ -11,7 +11,6 @@ class Elements:
 
     #  сброс пароля
     EYE_ICON = By.XPATH, ".//div[contains(@class,  'input__icon')]"
-    # PASSWORD_INPUT_ACT = By.XPATH, ".//div[contains(@class, 'input_status_active')]"
     PASSWORD_INPUT_RESET = By.NAME, 'Введите новый пароль'
 
     # логин
@@ -24,19 +23,19 @@ class Elements:
     PERSONAL_ACCOUNT = By.XPATH, ".//p[text()='Личный Кабинет']"
     ORDER_HISTORY = By.XPATH, ".//a[text()='История заказов']"
     EXIT = By.XPATH, ".//button[text()='Выход']"
+
     # history
     FIRST_ORDER_NUM = By.XPATH, ".//div/ul/li[1]//p"
 
     # header
     CONSTRUCTOR = By.XPATH, ".//p[text()='Конструктор']"
     ORDER_LIST = By.XPATH, ".//p[text()='Лента Заказов']"
-    #
 
-    # main
     # ingredient
     FLUORESCENT_BUN = By.XPATH, ".//p[text()='Флюоресцентная булка R2-D3']/parent::a"
     COUNTER_FLOUR_BUN = By.XPATH, ".//p[text()='Флюоресцентная булка R2-D3']/..//p[1]"
 
+    # main
     ORDER = By.XPATH, ".//ul[contains(@class, 'BurgerConstructor_basket')]"
     CREATE_ORDER_BUTTON = By.XPATH, ".//button[text()='Оформить заказ']"
     LOADING_ANIMATION = By.XPATH, ".//img[@alt = 'loading animation']"
@@ -51,7 +50,6 @@ class Elements:
 
     # feed
     ORDER_HEADER_SIGN = By.XPATH, ".//h1[text()='Лента заказов']"
-
     ORDER_CARD = ".//p[contains(text(), '"
     END = "')]"
 
@@ -64,5 +62,3 @@ class Elements:
     # modals order
     MODAL_ORDER_DETAILS = By.XPATH, ".//div[contains(@class, 'Modal_order')]"
     MODAL_ORDER_NUMBER = By.XPATH, ".//div[contains(@class, 'Modal_order')]/p"
-
-
