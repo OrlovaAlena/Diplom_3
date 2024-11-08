@@ -10,13 +10,13 @@ class Elements:
     CONFIRM_BUTTON = By.XPATH, ".//form/button[text() = 'Сохранить']"
 
     #  сброс пароля
-    EYE_ICON = By.XPATH, ".//div[contains(@class,  'input__icon')]"
+    EYE_ICON = By.XPATH, ".//div[contains(@class, 'input__icon')]"
     PASSWORD_INPUT_RESET = By.NAME, 'Введите новый пароль'
 
     # логин
     SIGN_IN_BUTTON = By.XPATH, ".//button[text()='Войти в аккаунт']"
-    PASSWORD_INPUT = By.NAME, 'Пароль'
-    CONFIRM_LOGIN_BUTTON = By.XPATH, ".//form/button[text() = 'Войти']"
+    PASSWORD_INPUT = By.XPATH, ".//input[@name='Пароль']"
+    CONFIRM_LOGIN_BUTTON = By.XPATH, ".//button[text()='Войти']"
     EMAIL_INPUT = By.XPATH, ".//div[label[text()='Email']]/input"
 
     # личный кабинет

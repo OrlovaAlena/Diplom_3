@@ -6,8 +6,6 @@ from src.elements import Elements
 
 class PersonalAccountPage(BasePage):
 
-    URL = 'https://stellarburgers.nomoreparties.site/account/profile'
-
     @allure.step('Клик на кнопку истории заказов')
     def order_history_click(self):
         self.click_to_element(Elements.ORDER_HISTORY)

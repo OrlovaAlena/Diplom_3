@@ -6,8 +6,6 @@ from src.elements import Elements
 
 class ResetPasswordPage(BasePage):
 
-    URL = 'https://stellarburgers.nomoreparties.site/reset-password'
-
     @allure.step('Кликнуть на иконку')
     def eye_icon_click(self):
         self.click_to_element(Elements.EYE_ICON)

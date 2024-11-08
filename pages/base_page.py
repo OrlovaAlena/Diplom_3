@@ -6,22 +6,21 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class BasePage:
 
-    URL = 'https://stellarburgers.nomoreparties.site/'
-
     def __init__(self, driver):
         self.driver = driver
+        self.timeout = 10
 
     @allure.step('Ожидание адреса страницы')
     def wait_for_url(self, url):
-        return WebDriverWait(self.driver, 5).until(expected_conditions.url_to_be(url))
+        return WebDriverWait(self.driver, self.timeout).until(expected_conditions.url_to_be(url))
 
     @allure.step('Получить адрес страницы')
     def get_current_url(self):
         return self.driver.current_url
 
     @allure.step('Найти элемент')
-    def find_element(self, locator, timeout=10):
-        return WebDriverWait(self.driver, timeout).until(expected_conditions.presence_of_element_located(locator))
+    def find_element(self, locator):
+        return WebDriverWait(self.driver, self.timeout).until(expected_conditions.presence_of_element_located(locator))
 
     @allure.step('Открыть страницу')
     def open_page(self, url):
@@ -33,8 +32,9 @@ class BasePage:
         self.find_element(locator).click()
 
     @allure.step('Ожидание появления элемента')
-    def wait_for_visible(self, locator, timeout=10):
-        return WebDriverWait(self.driver, timeout).until(expected_conditions.visibility_of_element_located(locator))
+    def wait_for_visible(self, locator):
+        return WebDriverWait(self.driver, self.timeout).until(
+            expected_conditions.visibility_of_element_located(locator))
 
     @allure.step('Заполнить инпут')
     def fill_input(self, locator, text):
@@ -57,4 +57,5 @@ class BasePage:
 
     @allure.step('Ожидание исчезновения элемента')
     def wait_for_invisibility(self, locator):
-        return WebDriverWait(self.driver, 15).until(expected_conditions.invisibility_of_element_located(locator))
+        return WebDriverWait(self.driver, self.timeout).until(
+            expected_conditions.invisibility_of_element_located(locator))

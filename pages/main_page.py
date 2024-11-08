@@ -2,13 +2,14 @@ import allure
 
 from pages.base_page import BasePage
 from src.elements import Elements
+from src.urls import Url
 
 
 class MainPage(BasePage):
 
     @allure.step('Открыть страницу')
     def open(self):
-        self.open_page(BasePage.URL)
+        self.open_page(Url.BASE_PAGE)
 
     @allure.step('Клик по ингредиенту')
     def click_to_ingredient(self):

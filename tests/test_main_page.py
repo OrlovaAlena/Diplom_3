@@ -1,12 +1,9 @@
 import allure
 
-from pages.base_page import BasePage
 from pages.header import Header
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
-from pages.order_feed_page import OrderPage
-from pages.personal_account_page import PersonalAccountPage
-from src.requests_user_api import delete_user
+from src.urls import Url
 
 
 class TestMainPage:
@@ -16,12 +13,9 @@ class TestMainPage:
         login_page = LoginPage(driver)
         header = Header(driver)
         login_page.open()
-        access_token = login_page.authorize_user()
         header.click_account_button()
 
-        delete_user(access_token)
-
-        assert header.get_current_url() == PersonalAccountPage.URL
+        assert header.get_current_url() == Url.PERSONAL_ACCOUNT
 
     @allure.title('Переход на страницу конструктора по кнопке')
     def test_navigate_to_constructor(self, driver):
@@ -30,14 +24,14 @@ class TestMainPage:
         login_page.open()
         header.click_to_constructor_button()
 
-        assert header.get_current_url() == BasePage.URL
+        assert header.get_current_url() == Url.BASE_PAGE
 
     @allure.title('Переход на страницу ленты заказов по кнопке')
     def test_navigate_to_order_list(self, driver):
         header = Header(driver)
         header.click_to_order_list_button()
 
-        assert header.get_current_url() == OrderPage.URL
+        assert header.get_current_url() == Url.ORDER
 
     @allure.title('При клике на ингредиент открывается модальное окно с деталями')
     def test_ingredient_modal_open(self, driver):
@@ -65,14 +59,9 @@ class TestMainPage:
         assert count_before < count_after
 
     @allure.title('Залогиненный пользователь может оформить заказ')
-    def test_create_order_with_authorized_user(self, driver):
-        login_page = LoginPage(driver)
-        login_page.open()
-        access_token = login_page.authorize_user()
+    def test_create_order_with_authorized_user(self, driver, create_user_and_delete):
         main_page = MainPage(driver)
         main_page.add_ingredient_to_order()
         main_page.create_order()
-
-        delete_user(access_token)
 
         assert main_page.check_the_order_create_sign() and main_page.check_the_close_button()

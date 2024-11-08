@@ -5,4 +5,3 @@ class Data:
 
     EMAIL = '@yandex.ru'
 
-    ORDER_HISTORY_URL = "account/order-history"

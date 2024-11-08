@@ -3,6 +3,7 @@ import allure
 from pages.login_page import LoginPage
 from pages.reset_page import ResetPasswordPage
 from pages.restore_page import RestorePasswordPage
+from src.urls import Url
 
 
 class TestForgotPassword:
@@ -14,23 +15,21 @@ class TestForgotPassword:
         login_page.open()
         login_page.forgot_password_click()
 
-        assert forgot_pass.get_current_url() == RestorePasswordPage.URL
+        assert forgot_pass.get_current_url() == Url.RESTORE_PASSWORD
 
     @allure.title('Ввод почты и клик по кнопке восстановления')
     def test_restore_password_with_email(self, driver):
         restore = RestorePasswordPage(driver)
-
         restore.open()
         restore.set_email()
         restore.click_restore_button()
 
-        assert restore.get_current_url() == ResetPasswordPage.URL
+        assert restore.get_current_url() == Url.RESET_PASSWORD
 
     @allure.title('Клик по иконке показать/скрыть пароль делает поле активным')
     def test_activate_pass_field_by_the_eye_sign(self, driver):
         reset = ResetPasswordPage(driver)
         restore = RestorePasswordPage(driver)
-
         restore.open()
         restore.set_email()
         restore.click_restore_button()

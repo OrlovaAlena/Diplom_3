@@ -2,7 +2,7 @@ import allure
 import requests
 
 from pages.base_page import BasePage
-from src.endpoints import USER
+from src.urls import USER
 
 
 @allure.step("Удалить пользователя")

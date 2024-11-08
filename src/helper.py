@@ -1,8 +1,7 @@
 import requests
 
-from pages.base_page import BasePage
 from src.data import Data
-from src.endpoints import CREATE_USER
+from src.urls import CREATE_USER, Url
 
 import random
 import string
@@ -26,7 +25,7 @@ def create_new_user():
         "password": password,
         "name": name
     }
-    response = requests.post(BasePage.URL + CREATE_USER, data=payload)
+    response = requests.post(Url.BASE_PAGE + CREATE_USER, data=payload)
     if response.status_code == 200:
         login_pass.append(email)
         login_pass.append(password)

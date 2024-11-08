@@ -3,14 +3,14 @@ from selenium.webdriver.common.by import By
 
 from pages.base_page import BasePage
 from src.elements import Elements
+from src.urls import Url
 
 
 class OrderPage(BasePage):
-    URL = 'https://stellarburgers.nomoreparties.site/feed'
 
     @allure.step('Открыть страницу заказа')
     def open(self):
-        self.open_page(self.URL)
+        self.open_page(Url.ORDER)
         self.wait_for_visible(Elements.ORDER_HEADER_SIGN)
 
     @allure.step('Клик по карточке заказа в ленте')
